@@ -172,7 +172,7 @@ class MicroDisplayActivity : BaseActivity(), DisplayHost {
     }
 
     private fun initEventListener() {
-        addKeyEventRepeatListener(KeyEvent.BACK,
+        addKeyEventRepeatListener(KeyEvent.CALL,
             SimpleKeyEventRepeatCallback {
                 showBackDialog()
                 onKeyUp(it, 0)
@@ -191,9 +191,11 @@ class MicroDisplayActivity : BaseActivity(), DisplayHost {
             0 -> {
                 throw Exception("No MIDlet found")
             }
+
             1 -> {
                 MidletThread.create(microLoader, midletClassArray[0])
             }
+
             else -> {
                 showMidletDialog(midletNameArray, midletClassArray) {
                     MidletThread.create(microLoader, midletClassArray[0])
@@ -252,7 +254,9 @@ class MicroDisplayActivity : BaseActivity(), DisplayHost {
             )
             val repeatCount = event.repeatCount
             if (repeatCount == 0) {
-                KeyEventPostHelper.postKeyPressed(current, gameKey)
+                delay(50) {
+                    KeyEventPostHelper.postKeyPressed(current, gameKey)
+                }
             } else {
                 KeyEventPostHelper.postKeyRepeated(current, gameKey)
             }
@@ -274,9 +278,10 @@ class MicroDisplayActivity : BaseActivity(), DisplayHost {
     override fun onKeyDown(event: KeyEvent, repeatCount: Int): Boolean {
         log("onDown ---- $event: $repeatCount")
         if (event == KeyEvent.CALL) {
-            takeScreenshot()
+            return true
+        } else {
+            return super.onKeyDown(event, repeatCount)
         }
-        return super.onKeyDown(event, repeatCount)
     }
 
     private fun showBackDialog() {
@@ -405,8 +410,7 @@ class MicroDisplayActivity : BaseActivity(), DisplayHost {
 
     override fun buildGuide(builder: Guide.Builder) {
         builder.clean()
-            .next(KeyEvent.BACK, R.string.guide_micro_back)
-            .next(KeyEvent.CALL, R.string.guide_micro_screenshot)
+            .next(KeyEvent.CALL, R.string.guide_micro_call)
     }
 
     private enum class Orientation(val value: Int) {
