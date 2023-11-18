@@ -179,7 +179,8 @@ class J2meActivity : GridMenuActivity() {
     }
 
     override fun onLeftFeatureButtonClick(): Boolean {
-        OptionDialog.build(this) {
+        startFileChoose()
+        /*OptionDialog.build(this) {
             setTitle("来源")
             dataList.clear()
             add(OptionDialog.Item(getString(R.string.add_from_preset), OPTION_ID_PRESET))
@@ -210,7 +211,7 @@ class J2meActivity : GridMenuActivity() {
             setRightButton(R.string.cancel) {
                 it.dismiss()
             }
-        }.show()
+        }.show()*/
         return true
     }
 

@@ -6,7 +6,20 @@ plugins {
 android {
     compileSdkVersion 33
     buildToolsVersion "30.0.3"
-
+    signingConfigs {
+        debug {
+            storeFile file("../debug_key.jks")
+            storePassword "123456"
+            keyAlias "key"
+            keyPassword "123456"
+        }
+        release {
+            storeFile file("../debug_key.jks")
+            storePassword "123456"
+            keyAlias "key"
+            keyPassword "123456"
+        }
+    }
     defaultConfig {
         applicationId "com.lollipop.qin1sptools"
         //  白名单只有微信，所以包名设置为微信
@@ -15,6 +28,7 @@ android {
         targetSdkVersion 33
         versionCode 10300
         versionName "1.03.00"
+        multiDexEnabled true
         ndk {
             //noinspection ChromeOsAbiSupport
             abiFilters 'armeabi-v7a' //, 'arm64-v8a', 'x86', 'x86_64'
@@ -23,12 +37,11 @@ android {
 
     buildTypes {
         release {
-            multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             jniDebuggable true
-            multiDexEnabled true
         }
     }
 
@@ -60,20 +73,6 @@ android {
         disable 'MissingTranslation'
     }
     namespace 'com.lollipop.qin1sptools'
-    signingConfigs {
-        debug {
-            storeFile file("../../debug_key.jks")
-            storePassword "123456"
-            keyAlias "key"
-            keyPassword "123456"
-        }
-//        release {
-//            storeFile file(keystoreProperties['RELEASE_STORE_FILE'])
-//            storePassword keystoreProperties['RELEASE_KEYSTORE_PASSWORD']
-//            keyAlias keystoreProperties['RELEASE_KEY_ALIAS']
-//            keyPassword keystoreProperties['RELEASE_KEY_PASSWORD']
-//        }
-    }
 }
 
 dependencies {

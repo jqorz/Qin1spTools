@@ -13,9 +13,11 @@ import com.lollipop.qin1sptools.utils.FeatureIcon
 import com.lollipop.qin1sptools.utils.doAsync
 import com.lollipop.qin1sptools.utils.onUI
 import java.io.File
-import java.util.*
+import java.text.Collator
+import java.util.LinkedList
+import java.util.Locale
 import java.util.regex.Pattern
-import kotlin.collections.ArrayList
+
 
 /**
  * 文件选择的Activity
@@ -138,7 +140,6 @@ class FileChooseActivity : SimpleListActivity() {
                     Pattern.compile(it)
                 }
             }
-            val childrenList = ArrayList<String>()
             val childrenFileList = ArrayList<File>()
             if (dir.isDirectory) {
                 dir.listFiles()?.forEach {
@@ -153,11 +154,14 @@ class FileChooseActivity : SimpleListActivity() {
                         needAdd = true
                     }
                     if (needAdd) {
-                        childrenList.add(it.name)
                         childrenFileList.add(it)
                     }
                 }
             }
+            childrenFileList.sortWith(compareByDescending<File> { it.isDirectory }.thenComparator { a, b ->
+                Collator.getInstance(Locale.CHINA).compare(a.name, b.name)
+            })
+            val childrenList = childrenFileList.map { (if (it.isDirectory) " > " else "") + it.name }
             if (actionIndexer.active(nowAction)) {
                 breadCrumbs.addLast(DirInfo(dir, 0, childrenList, childrenFileList))
                 currentFiles.addAll(childrenList)
@@ -202,9 +206,11 @@ class FileChooseActivity : SimpleListActivity() {
                 back()
                 return true
             }
+
             KeyEvent.RIGHT -> {
                 return toNextDir()
             }
+
             else -> {
 
             }
@@ -242,12 +248,12 @@ class FileChooseActivity : SimpleListActivity() {
 
     private fun updateTitle() {
         if (breadCrumbs.isEmpty()) {
-            setTitle(R.string.app_name)
+            setTitle(R.string.add_from_file)
             return
         }
         val last = breadCrumbs.last
         if (last == breadCrumbs.first) {
-            setTitle(R.string.app_name)
+            setTitle(R.string.add_from_file)
             return
         }
         title = last.file.name
