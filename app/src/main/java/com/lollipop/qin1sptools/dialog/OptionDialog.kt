@@ -34,8 +34,8 @@ class OptionDialog private constructor(private val option: Option) : BaseDialog(
     private val dataList = ArrayList<Item>()
 
     private val simpleListHelper = SimpleListHelper(
-        {binding.optionListView},
-        {dataList.size},
+        { binding.optionListView },
+        { dataList.size },
         ::onSelectedPositionChanged
     )
 
@@ -69,9 +69,15 @@ class OptionDialog private constructor(private val option: Option) : BaseDialog(
             KeyEvent.UP -> {
                 simpleListHelper.selectLast()
             }
+
             KeyEvent.DOWN -> {
                 simpleListHelper.selectNext()
             }
+
+            KeyEvent.CENTER -> {
+                super.onKeyEvent(KeyEvent.OPTION)
+            }
+
             else -> {
                 super.onKeyEvent(event)
             }

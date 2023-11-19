@@ -17,7 +17,7 @@ class NineGridsLayout(context: Context, attributeSet: AttributeSet?, defStyle: I
 
     var pageIndex = -1
 
-    var selectedChild: Int = -1
+    var selectedChildIndex: Int = -1
         set(value) {
             field = value
             notifyChildIndexChanged()
@@ -98,7 +98,7 @@ class NineGridsLayout(context: Context, attributeSet: AttributeSet?, defStyle: I
     }
 
     fun notifyChildIndexChanged() {
-        val selected = selectedChild
+        val selected = selectedChildIndex
         val scale = selectedScale
         for (index in 0 until childCount) {
             getChildAt(index)?.let { child ->

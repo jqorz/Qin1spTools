@@ -29,6 +29,8 @@ abstract class GridMenu(
 
     abstract fun resetCurrentSelected()
 
+    abstract fun getCurrentSelected(): GridItem
+
     protected fun onGridItemClick(item: GridItem, index: Int) {
         onGridItemClickCallback(item, index)
     }

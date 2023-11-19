@@ -17,10 +17,12 @@
     <string name="menu">菜单</string>
     <string name="ok">选择</string>
     <string name="cancel">取消</string>
-    <string name="guide_show">点击可以再次查看引导</string>
-    <string name="guide_add_jar">点击按钮进入文件选择页面，可以添加Java应用</string>
+    <string name="guide_show">上按数字键0可以再次查看引导</string>
+    <string name="guide_menu_jar">点击按钮，可以添加Java应用</string>
     <string name="guide_grid_num">点击数字键1-9可以选中图标，再次点击被选中图标对应的数字将会打开应用</string>
-    <string name="guide_browser_direction">点击方向键可以切换上一页/下一页</string>
+    <string name="guide_browser_last_page">点击可以查看上一页</string>
+    <string name="guide_browser_next_page">点击可以查看下一页</string>
+    <string name="guide_browser_direction">点击方向键可以切换选中的应用</string>
     <string name="guide_micro_call">已进入Java应用，按键将交给应用程序响应。但是您仍然可以通过长按拨号按钮强制退出应用</string>
     <string name="guide_file_up">点击按钮可以向上选择</string>
     <string name="guide_file_down">点击按钮可以向下选择</string>

@@ -35,7 +35,7 @@ class J2meActivity : GridMenuActivity() {
     }
 
     override val baseFeatureIconArray = arrayOf(
-        FeatureIcon.ADD,
+        FeatureIcon.OPTION,
         FeatureIcon.NONE,
         FeatureIcon.BACK
     )
@@ -184,7 +184,7 @@ class J2meActivity : GridMenuActivity() {
     override fun onLeftFeatureButtonClick(): Boolean {
         startFileChoose()
         /*OptionDialog.build(this) {
-            setTitle("来源")
+            setTitle(R.string.menu)
             dataList.clear()
             add(OptionDialog.Item(getString(R.string.add_from_preset), OPTION_ID_PRESET))
             add(OptionDialog.Item(getString(R.string.add_from_file), OPTION_ID_FILE))
@@ -198,9 +198,11 @@ class J2meActivity : GridMenuActivity() {
                             OPTION_ID_FILE -> {
                                 startFileChoose()
                             }
+
                             OPTION_ID_PRESET -> {
                                 startPresetChoose()
                             }
+
                             else -> {
                                 setMenuMode(id)
                                 startActivity(Intent(this@J2meActivity, J2meActivity::class.java))
@@ -274,10 +276,12 @@ class J2meActivity : GridMenuActivity() {
     }
 
     override fun buildGuide(builder: Guide.Builder) {
-        builder.next(KeyEvent.OPTION, R.string.guide_add_jar)
+        builder.next(KeyEvent.OPTION, R.string.guide_menu_jar)
             .next(KeyEvent.UP, R.string.guide_browser_direction)
             .next(KeyEvent.KEY_5, R.string.guide_grid_num)
-            .next(KeyEvent.KEY_STAR, R.string.guide_delete_java_app)
+            .next(KeyEvent.KEY_0, R.string.guide_delete_java_app)
+            .next(KeyEvent.KEY_STAR, R.string.guide_browser_last_page)
+            .next(KeyEvent.KEY_POUND, R.string.guide_browser_next_page)
         super.buildGuide(builder)
     }
 

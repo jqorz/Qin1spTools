@@ -10,7 +10,10 @@ import com.lollipop.qin1sptools.databinding.ActivityFeatureBarBinding
 import com.lollipop.qin1sptools.event.KeyEvent
 import com.lollipop.qin1sptools.event.KeyEventListener
 import com.lollipop.qin1sptools.guide.Guide
-import com.lollipop.qin1sptools.utils.*
+import com.lollipop.qin1sptools.utils.FeatureIcon
+import com.lollipop.qin1sptools.utils.ViewToastHelper
+import com.lollipop.qin1sptools.utils.lazyBind
+import com.lollipop.qin1sptools.utils.visibleOrGone
 
 /**
  * @author lollipop
@@ -126,6 +129,22 @@ open class FeatureBarActivity : BaseActivity() {
         return FeatureIcon.NONE
     }
 
+    override fun onKeyDown(event: KeyEvent, repeatCount: Int): Boolean {
+        when (event) {
+            KeyEvent.KEY_0 -> {
+                if (repeatCount == 2) {
+                    showGuide()
+                    super.onKeyUp(event, 0)
+                    return true
+                }
+            }
+
+            else -> {}
+
+        }
+        return super.onKeyDown(event, repeatCount)
+    }
+
     override fun onKeyUp(event: KeyEvent, repeatCount: Int): Boolean {
         when (event) {
             KeyEvent.OPTION -> {
@@ -146,8 +165,9 @@ open class FeatureBarActivity : BaseActivity() {
                 }
             }
 
-            KeyEvent.KEY_POUND -> {
+            KeyEvent.KEY_0 -> {
                 showGuide()
+                return true
             }
 
             else -> {
@@ -182,7 +202,7 @@ open class FeatureBarActivity : BaseActivity() {
         super.buildGuide(builder)
     }
 
-    private class LoadingKeyFilter: KeyEventListener {
+    private class LoadingKeyFilter : KeyEventListener {
 
         var isLoading = false
 

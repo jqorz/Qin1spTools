@@ -48,6 +48,7 @@ open class GridMenuActivity : FeatureBarActivity() {
             MenuMode.V1 -> {
                 GridMenuManagerV1(this, ::gridItemList, ::onGridItemClick, ::onGridItemInfoClick)
             }
+
             MenuMode.V2 -> {
                 GridMenuManagerV2(this, ::gridItemList, ::onGridItemClick, ::onGridItemInfoClick)
             }
@@ -90,6 +91,10 @@ open class GridMenuActivity : FeatureBarActivity() {
 
     protected open fun onGridItemInfoClick(item: GridMenu.GridItem?, index: Int) {
 
+    }
+
+    protected fun getCurrentSelectItem(): GridMenu.GridItem {
+        return gridMenu.getCurrentSelected()
     }
 
     override fun onDestroy() {

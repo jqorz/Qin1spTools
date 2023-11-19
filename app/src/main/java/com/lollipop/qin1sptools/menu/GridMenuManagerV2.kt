@@ -83,23 +83,27 @@ class GridMenuManagerV2(
                     binding.contentGroup.currentItem = selectedPosition - 1
                 }
             }
+
             KeyEvent.RIGHT, KeyEvent.DOWN, KeyEvent.KEY_6, KeyEvent.KEY_8 -> {
                 if (dataList.isNotEmpty() && selectedPosition < dataList.size - 1) {
                     binding.contentGroup.currentItem = selectedPosition + 1
                 }
             }
+
             KeyEvent.CENTER, KeyEvent.KEY_5, KeyEvent.CALL -> {
                 val position = selectedPosition
                 if (position in dataList.indices) {
                     onGridItemClick(dataList[position], position)
                 }
             }
+
             KeyEvent.KEY_STAR -> {
                 val position = selectedPosition
                 if (position in dataList.indices) {
                     onGridItemInfoClick(dataList[position], position)
                 }
             }
+
             else -> {
                 return false
             }
@@ -123,6 +127,10 @@ class GridMenuManagerV2(
             0
         }
         binding.contentGroup.currentItem = selectedPosition
+    }
+
+    override fun getCurrentSelected(): GridItem {
+        return dataList.get(selectedPosition)
     }
 
     override fun onDestroy() {
