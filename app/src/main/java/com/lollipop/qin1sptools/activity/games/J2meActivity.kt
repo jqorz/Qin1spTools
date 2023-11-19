@@ -10,11 +10,14 @@ import com.lollipop.qin1sptools.R
 import com.lollipop.qin1sptools.activity.FileChooseActivity
 import com.lollipop.qin1sptools.activity.base.GridMenuActivity
 import com.lollipop.qin1sptools.dialog.MessageDialog
-import com.lollipop.qin1sptools.dialog.OptionDialog
 import com.lollipop.qin1sptools.event.KeyEvent
 import com.lollipop.qin1sptools.guide.Guide
 import com.lollipop.qin1sptools.menu.GridMenu
-import com.lollipop.qin1sptools.utils.*
+import com.lollipop.qin1sptools.utils.FeatureIcon
+import com.lollipop.qin1sptools.utils.delay
+import com.lollipop.qin1sptools.utils.doAsync
+import com.lollipop.qin1sptools.utils.onUI
+import com.lollipop.qin1sptools.utils.requestStoragePermissions
 import ru.playsoftware.j2meloader.applist.AppItem
 import ru.playsoftware.j2meloader.appsdb.AppRepository
 import ru.playsoftware.j2meloader.util.AppUtils
@@ -272,6 +275,7 @@ class J2meActivity : GridMenuActivity() {
 
     override fun buildGuide(builder: Guide.Builder) {
         builder.next(KeyEvent.OPTION, R.string.guide_add_jar)
+            .next(KeyEvent.UP, R.string.guide_browser_direction)
             .next(KeyEvent.KEY_5, R.string.guide_grid_num)
             .next(KeyEvent.KEY_STAR, R.string.guide_delete_java_app)
         super.buildGuide(builder)

@@ -21,13 +21,11 @@ android {
         }
     }
     defaultConfig {
-        applicationId "com.lollipop.qin1sptools"
-        //  白名单只有微信，所以包名设置为微信
-//        applicationId "com.tencent.mm"
+        applicationId "com.jqorz.qin1sptools"
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 10300
-        versionName "1.03.00"
+        versionCode 10400
+        versionName "1.04.00"
         multiDexEnabled true
         ndk {
             //noinspection ChromeOsAbiSupport
@@ -50,7 +48,7 @@ android {
     productFlavors {
         lollipopLite {
             dimension "mode"
-            applicationId = "com.lollipop.qin1sptools"
+            applicationId = "com.jqorz.qin1sptools"
         }
         wechatLite {
             dimension "mode"

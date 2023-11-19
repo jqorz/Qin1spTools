@@ -38,12 +38,11 @@ open class GridMenuActivity : FeatureBarActivity() {
     }
 
     protected fun getMenuMode(): MenuMode {
-        val modeCode = get(KEY_MENU_MODE, MenuMode.V2.code)
-        return MenuMode.values().find { it.code == modeCode } ?: MenuMode.V2
+        val modeCode = get(KEY_MENU_MODE, MenuMode.V1.code)
+        return MenuMode.values().find { it.code == modeCode } ?: MenuMode.V1
     }
 
     private fun createMenuManger(): GridMenu {
-        val modeCode = get(KEY_MENU_MODE, MenuMode.V2.code)
         val mode = getMenuMode()
         return when (mode) {
             MenuMode.V1 -> {

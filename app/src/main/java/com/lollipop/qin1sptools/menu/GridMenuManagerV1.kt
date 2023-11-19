@@ -113,57 +113,78 @@ class GridMenuManagerV1(
                 }
                 onNumberClick(position)
             }
+
             KeyEvent.LEFT, KeyEvent.UP -> {
-                if (pageIndex > 0) {
-                    pageIndex--
-                    updateGridPage()
-                }
-                // 翻页后重置选中序号
-                resetCurrentSelected()
+                switchToLastPage()
             }
+
             KeyEvent.RIGHT, KeyEvent.DOWN -> {
-                if (pageIndex < pageCount - 1) {
-                    pageIndex++
-                    updateGridPage()
-                }
-                // 翻页后重置选中序号
-                resetCurrentSelected()
+                switchToNextPage()
             }
+
             KeyEvent.KEY_1 -> {
                 onNumberClick(1)
             }
+
             KeyEvent.KEY_2 -> {
                 onNumberClick(2)
             }
+
             KeyEvent.KEY_3 -> {
                 onNumberClick(3)
             }
+
             KeyEvent.KEY_4 -> {
                 onNumberClick(4)
             }
+
             KeyEvent.KEY_5 -> {
                 onNumberClick(5)
             }
+
             KeyEvent.KEY_6 -> {
                 onNumberClick(6)
             }
+
             KeyEvent.KEY_7 -> {
                 onNumberClick(7)
             }
+
             KeyEvent.KEY_8 -> {
                 onNumberClick(8)
             }
+
             KeyEvent.KEY_9 -> {
                 onNumberClick(9)
             }
+
             KeyEvent.KEY_STAR -> {
                 onStarClick()
             }
+
             else -> {
                 return false
             }
         }
         return true
+    }
+
+    private fun switchToNextPage() {
+        if (pageIndex < pageCount - 1) {
+            pageIndex++
+            updateGridPage()
+            // 翻页后重置选中序号
+            resetCurrentSelected()
+        }
+    }
+
+    private fun switchToLastPage() {
+        if (pageIndex > 0) {
+            pageIndex--
+            updateGridPage()
+            // 翻页后重置选中序号
+            resetCurrentSelected()
+        }
     }
 
     private fun View.resetSelectedFlag() {

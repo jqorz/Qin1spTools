@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Lollipop</string>
+    <string name="app_name">Lollipop+</string>
     <string name="external_storage_not_found">找不到可用的储存空间</string>
     <string name="folder_unavailable">当前文件夹不可用</string>
     <string name="empty">什么也没有</string>
-    <string name="j2me_name">Java</string>
+    <string name="j2me_name">Java+</string>
     <string name="error">出错了</string>
     <string name="convert_error">Java文件解析出错，无法完成转换</string>
     <string name="screenshot_save_in">截图保存至：%1$s</string>
@@ -19,7 +19,8 @@
     <string name="cancel">取消</string>
     <string name="guide_show">点击可以再次查看引导</string>
     <string name="guide_add_jar">点击按钮进入文件选择页面，可以添加Java应用</string>
-    <string name="guide_grid_num">点击数字键可以选中图标，再次点击被选中图标对应的数字将会打开应用</string>
+    <string name="guide_grid_num">点击数字键1-9可以选中图标，再次点击被选中图标对应的数字将会打开应用</string>
+    <string name="guide_browser_direction">点击方向键可以切换上一页/下一页</string>
     <string name="guide_micro_call">已进入Java应用，按键将交给应用程序响应。但是您仍然可以通过长按拨号按钮强制退出应用</string>
     <string name="guide_file_up">点击按钮可以向上选择</string>
     <string name="guide_file_down">点击按钮可以向下选择</string>
